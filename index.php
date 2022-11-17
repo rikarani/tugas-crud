@@ -1,9 +1,15 @@
 <?php
 require "koneksi.php";
+require "cari.php";
 
 global $koneksi;
 
 $data = mysqli_query($koneksi, "SELECT * FROM tabel_negara");
+
+if (isset($_POST["cari"])) {
+    $data = cari($_POST["keyword"]);
+}
+
 $i = 1;
 ?>
 
@@ -21,14 +27,18 @@ $i = 1;
     <!-- Style CSS -->
 </head>
 
-<body>
+<body class="bg-slate-50">
     <div class="container max-w-3xl mx-auto box-border p-4">
         <h1 class="text-3xl font-bold text-center">Tugas CRUD</h1>
 
         <a href="tambah.php" class="mt-2 inline-block py-2 px-4 mb-4 bg-blue-500 rounded-md text-white hover:bg-blue-700">Tambah Data Negara</a>
 
-        <table class="table-auto border-red-500 mx-auto w-full text-center rounded-lg overflow-hidden">
+        <form action="" method="POST" class="mb-4">
+            <input type="text" name="keyword" id="cari" placeholder="Masukkan Keyword Pencarian..." class="border-b-2 border-black outline-none w-64 bg-inherit">
+            <button type="submit" name="cari" class="bg-slate-700 hover:bg-slate-900 text-white inline-block w-20 h-8 rounded-md text-lg">Cari</button>
+        </form>
 
+        <table class="table-auto border-red-500 mx-auto w-full text-center rounded-lg overflow-hidden">
             <thead class="bg-slate-800 text-white">
                 <tr>
                     <th class="py-2 px-2">No.</th>
