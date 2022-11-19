@@ -20,3 +20,17 @@ function fetch(String $sql)
 
     return $results;
 }
+
+// Bikin Function buat nambahin data ke database (Create)
+function tambah($data)
+{
+    global $koneksi;
+
+    $kode = htmlspecialchars($data["kode"]);
+    $nama = htmlspecialchars($data["nama"]);
+    $presiden = htmlspecialchars($data["presiden"]);
+
+    mysqli_query($koneksi, "INSERT INTO tabel_negara VALUES ('', '$kode', '$nama', '$presiden')");
+
+    return mysqli_affected_rows($koneksi);
+}
