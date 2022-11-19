@@ -1,29 +1,18 @@
 <?php
-require "koneksi.php";
-
-// Fungsi Create
-function tambah($data)
-{
-    global $koneksi;
-
-    $kode = htmlspecialchars($data["kode"]);;
-    $nama = htmlspecialchars($data["nama"]);
-    $presiden = htmlspecialchars($data["presiden"]);
-
-    mysqli_query($koneksi, "INSERT INTO tabel_negara VALUES ('', '$kode', '$nama', '$presiden')");
-
-    return mysqli_affected_rows($koneksi);
-}
+// Import File Function
+require "functions.php";
 
 // Cek Apakah Tombol Submit dah ditekan atau blum
-
 if (isset($_POST["submit"])) {
+    // Kalau data berhasil ditambahkan
     if (tambah($_POST) > 0) {
         echo "<script>
             alert('Data Berhasil Ditambahkan');
             window.location.href = 'index.php';
         </script>";
-    } else {
+    }
+    // Kalau data gagal ditambahkan
+    else {
         echo "<script>
             alert('Data Gagal Ditambahkan');
         </script>";
