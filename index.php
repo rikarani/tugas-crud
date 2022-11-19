@@ -1,4 +1,7 @@
 <?php
+// TODO : Bikin Function Read
+// TODO : Bikin Function Update
+// TODO : Bikin Function Delete
 // Import File Function
 require "functions.php";
 
@@ -46,14 +49,16 @@ $i = 1;
             </thead>
             <?php foreach ($data as $negara) : ?>
                 <tbody class="even:bg-slate-300 odd:bg-slate-100">
-                    <td><?= $i; ?></td>
-                    <td class="flex gap-4 justify-center py-2">
-                        <a href="ubah.php?id=<?= $negara["id"] ?>" class="bg-blue-500 text-white px-2 py-1 font-semibold rounded-md hover:bg-blue-700">Ubah</a>
-                        <a href="hapus.php?id=<?= $negara["id"] ?>" onclick="return confirm('Apakah Ingin Menghapus Data?')" class="bg-red-500 text-white px-2 py-1 rounded-md font-semibold hover:bg-red-700">Hapus</a>
-                    </td>
-                    <td>+<?= $negara["kode"]; ?></td>
-                    <td><?= $negara["namaNegara"]; ?></td>
-                    <td><?= $negara["namaKepalaNegara"]; ?></td>
+                    <tr>
+                        <td><?= $i; ?></td>
+                        <td class="flex gap-4 justify-center py-2">
+                            <a href="ubah.php?id=<?= $negara["id"] ?>" class="bg-blue-500 text-white px-2 py-1 font-semibold rounded-md hover:bg-blue-700">Ubah</a>
+                            <a href="hapus.php?id=<?= $negara["id"] ?>" onclick="return confirm('Apakah Ingin Menghapus Data?')" class="bg-red-500 text-white px-2 py-1 rounded-md font-semibold hover:bg-red-700">Hapus</a>
+                        </td>
+                        <td>+<?= $negara["kode"]; ?></td>
+                        <td><?= $negara["namaNegara"]; ?></td>
+                        <td><?= $negara["namaKepalaNegara"]; ?></td>
+                    </tr>
                 </tbody>
                 <?php $i++ ?>
             <?php endforeach; ?>
