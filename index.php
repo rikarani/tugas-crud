@@ -1,15 +1,11 @@
 <?php
-require "koneksi.php";
-require "cari.php";
+// Import File Function
+require "functions.php";
 
-global $koneksi;
+// Fetch Data
+$data = fetch("SELECT * FROM tabel_negara");
 
-$data = mysqli_query($koneksi, "SELECT * FROM tabel_negara");
-
-if (isset($_POST["cari"])) {
-    $data = cari($_POST["keyword"]);
-}
-
+// Variable buat Nomer
 $i = 1;
 ?>
 
@@ -48,7 +44,7 @@ $i = 1;
                     <th>Nama Kepala Negara</th>
                 </tr>
             </thead>
-            <?php while ($negara = mysqli_fetch_assoc($data)) : ?>
+            <?php foreach ($data as $negara) : ?>
                 <tbody class="even:bg-slate-300 odd:bg-slate-100">
                     <td><?= $i; ?></td>
                     <td class="flex gap-4 justify-center py-2">
@@ -60,7 +56,7 @@ $i = 1;
                     <td><?= $negara["namaKepalaNegara"]; ?></td>
                 </tbody>
                 <?php $i++ ?>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </table>
     </div>
 </body>
