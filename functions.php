@@ -1,4 +1,7 @@
 <?php
+// TODO : Bikin Function Read
+// TODO : Bikin Function Update
+// TODO : Bikin Function Delete
 // Import File Koneksi ke Database
 require "koneksi.php";
 
