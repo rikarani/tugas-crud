@@ -1,5 +1,4 @@
 <?php
-// TODO : Bikin Function Read
 // TODO : Bikin Function Update
 // TODO : Bikin Function Delete
 // Import File Function
@@ -7,6 +6,11 @@ require "functions.php";
 
 // Fetch Data
 $data = fetch("SELECT * FROM tabel_negara");
+
+// pas tombol cari diklik
+if (isset($_POST["cari"])) {
+    $data = cari($_POST["keyword"]);
+}
 
 // Variable buat Nomer
 $i = 1;
