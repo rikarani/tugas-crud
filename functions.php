@@ -1,11 +1,10 @@
 <?php
-// TODO : Bikin Function Read
 // TODO : Bikin Function Update
 // TODO : Bikin Function Delete
 // Import File Koneksi ke Database
 require "koneksi.php";
 
-// Bikin Function buat fetch semua data dari database
+// Function buat fetch semua data dari database
 function fetch(String $sql)
 {
     // Koneksi Database
@@ -24,7 +23,7 @@ function fetch(String $sql)
     return $results;
 }
 
-// Bikin Function buat nambahin data ke database (Create)
+// Function buat nambahin data ke database (Create)
 function tambah($data)
 {
     global $koneksi;
@@ -36,4 +35,12 @@ function tambah($data)
     mysqli_query($koneksi, "INSERT INTO tabel_negara VALUES ('', '$kode', '$nama', '$presiden')");
 
     return mysqli_affected_rows($koneksi);
+}
+
+// Function buat tampilin data (Read)
+function cari($keyword)
+{
+    $kueri = "SELECT * FROM tabel_negara WHERE kode LIKE '%$keyword%' OR namaNegara LIKE '%$keyword%' OR namaKepalaNegara LIKE '%$keyword%'";
+
+    return fetch($kueri);
 }
