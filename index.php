@@ -47,9 +47,9 @@ $i = 1;
                     <th>Nama Kepala Negara</th>
                 </tr>
             </thead>
-            <?php foreach ($data as $negara) : ?>
-                <tbody class="even:bg-slate-300 odd:bg-slate-100">
-                    <tr>
+            <tbody>
+                <?php foreach ($data as $negara) : ?>
+                    <tr class="even:bg-slate-300 odd:bg-slate-100">
                         <td><?= $i; ?></td>
                         <td class="flex gap-4 justify-center py-2">
                             <a href="ubah.php?id=<?= $negara["id"] ?>" class="bg-blue-500 text-white px-2 py-1 font-semibold rounded-md hover:bg-blue-700">Ubah</a>
@@ -59,9 +59,9 @@ $i = 1;
                         <td><?= $negara["namaNegara"]; ?></td>
                         <td><?= $negara["namaKepalaNegara"]; ?></td>
                     </tr>
-                </tbody>
-                <?php $i++ ?>
-            <?php endforeach; ?>
+                    <?php $i++ ?>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </body>
