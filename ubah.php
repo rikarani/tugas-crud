@@ -1,24 +1,13 @@
 <?php
-require "koneksi.php";
+require "functions.php";
 
-function ubah($data)
-{
-    global $koneksi;
-
-    $id = $data["id"];
-    $kode = htmlspecialchars($data["kode"]);
-    $nama = htmlspecialchars($data["nama"]);
-    $presiden = htmlspecialchars($data["presiden"]);
-
-    mysqli_query($koneksi, "UPDATE tabel_negara SET kode = '$kode', namaNegara = '$nama', namaKepalaNegara = '$presiden' WHERE id = '$id'");
-
-    return mysqli_affected_rows($koneksi);
-}
-
+// Tangkap ID negara yang mau diubah
 $id = $_GET["id"];
 
-$negara = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tabel_negara WHERE id = $id"));
+// Tampilkan Datanya
+$negara = fetch("SELECT * FROM tabel_negara WHERE id = '$id'");
 
+// Pas tombol ubah di-klik, jalankan query nya
 if (isset($_POST["ubah"])) {
     if (ubah($_POST) > 0) {
         echo "<script>
@@ -27,7 +16,7 @@ if (isset($_POST["ubah"])) {
         </script>";
     } else {
         echo "<script>
-            alert('Data Gagal Diubah');
+            alert('Gagal Mengubah Data');
         </script>";
     }
 }
@@ -56,7 +45,7 @@ if (isset($_POST["ubah"])) {
                     <label for="kode" hidden>ID : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="number" name="id" id="kode" class="w-full rounded-md" value="<?= $negara["id"] ?>" hidden>
+                    <input type="number" name="id" id="kode" class="w-full rounded-md" value="<?= $negara[0]["id"] ?>" hidden>
                 </div>
             </div>
 
@@ -65,7 +54,7 @@ if (isset($_POST["ubah"])) {
                     <label for="kode">Kode Negara : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="number" name="kode" id="kode" class="w-full rounded-md" value="<?= $negara["kode"] ?>">
+                    <input type="number" name="kode" id="kode" class="w-full rounded-md" value="<?= $negara[0]["kode"] ?>">
                 </div>
             </div>
 
@@ -74,7 +63,7 @@ if (isset($_POST["ubah"])) {
                     <label for="nama">Nama Negara : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="text" name="nama" id="nama" class="w-full rounded-md" value="<?= $negara["namaNegara"] ?>">
+                    <input type="text" name="nama" id="nama" class="w-full rounded-md" value="<?= $negara[0]["namaNegara"] ?>">
                 </div>
             </div>
 
@@ -83,7 +72,7 @@ if (isset($_POST["ubah"])) {
                     <label for="presiden">Nama Kepala Negara : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="text" name="presiden" id="presiden" class="w-full rounded-md" value="<?= $negara["namaKepalaNegara"] ?>">
+                    <input type="text" name="presiden" id="presiden" class="w-full rounded-md" value="<?= $negara[0]["namaKepalaNegara"] ?>">
                 </div>
             </div>
 
