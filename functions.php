@@ -1,5 +1,4 @@
 <?php
-// TODO : Bikin Function Update
 // TODO : Bikin Function Delete
 // Import File Koneksi ke Database
 require "koneksi.php";
@@ -43,4 +42,19 @@ function cari($keyword)
     $kueri = "SELECT * FROM tabel_negara WHERE kode LIKE '%$keyword%' OR namaNegara LIKE '%$keyword%' OR namaKepalaNegara LIKE '%$keyword%'";
 
     return fetch($kueri);
+}
+
+// Function buat Update dat (Update)
+function ubah($data)
+{
+    global $koneksi;
+
+    $id = htmlspecialchars($data["id"]);
+    $kode = htmlspecialchars($data["kode"]);
+    $nama = htmlspecialchars($data["nama"]);
+    $presiden = htmlspecialchars($data["presiden"]);
+
+    mysqli_query($koneksi, "UPDATE tabel_negara SET kode = '$kode', namaNegara = '$nama', namaKepalaNegara = '$presiden' WHERE id = '$id'");
+
+    return mysqli_affected_rows($koneksi);
 }

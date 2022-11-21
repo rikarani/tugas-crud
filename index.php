@@ -1,5 +1,4 @@
 <?php
-// TODO : Bikin Function Update
 // TODO : Bikin Function Delete
 // Import File Function
 require "functions.php";
