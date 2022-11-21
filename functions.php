@@ -44,7 +44,7 @@ function cari($keyword)
     return fetch($kueri);
 }
 
-// Function buat Update dat (Update)
+// Function buat Update data (Update)
 function ubah($data)
 {
     global $koneksi;
@@ -55,6 +55,16 @@ function ubah($data)
     $presiden = htmlspecialchars($data["presiden"]);
 
     mysqli_query($koneksi, "UPDATE tabel_negara SET kode = '$kode', namaNegara = '$nama', namaKepalaNegara = '$presiden' WHERE id = '$id'");
+
+    return mysqli_affected_rows($koneksi);
+}
+
+// Function buat hapus data (Delete)
+function hapus($id)
+{
+    global $koneksi;
+
+    mysqli_query($koneksi, "DELETE FROM tabel_negara WHERE id = '$id'");
 
     return mysqli_affected_rows($koneksi);
 }
