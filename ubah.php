@@ -5,7 +5,7 @@ require "functions.php";
 $id = $_GET["id"];
 
 // Tampilkan Datanya
-$negara = fetch("SELECT * FROM tabel_negara WHERE id = '$id'");
+$data = fetch("SELECT * FROM tabel_negara WHERE id = '$id'");
 
 // Pas tombol ubah di-klik, jalankan query nya
 if (isset($_POST["ubah"])) {
@@ -45,7 +45,7 @@ if (isset($_POST["ubah"])) {
                     <label for="kode" hidden>ID : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="number" name="id" id="kode" class="w-full rounded-md" value="<?= $negara[0]["id"] ?>" hidden>
+                    <input type="number" name="id" id="kode" class="w-full rounded-md" value="<?= $data[0]["id"] ?>" hidden>
                 </div>
             </div>
 
@@ -54,7 +54,7 @@ if (isset($_POST["ubah"])) {
                     <label for="kode">Kode Negara : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="number" name="kode" id="kode" class="w-full rounded-md" value="<?= $negara[0]["kode"] ?>">
+                    <input type="number" name="kode" id="kode" class="w-full rounded-md" value="<?= $data[0]["kode"] ?>">
                 </div>
             </div>
 
@@ -63,7 +63,7 @@ if (isset($_POST["ubah"])) {
                     <label for="nama">Nama Negara : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="text" name="nama" id="nama" class="w-full rounded-md" value="<?= $negara[0]["namaNegara"] ?>">
+                    <input type="text" name="nama" id="nama" class="w-full rounded-md" value="<?= $data[0]["namaNegara"] ?>">
                 </div>
             </div>
 
@@ -72,7 +72,7 @@ if (isset($_POST["ubah"])) {
                     <label for="presiden">Nama Kepala Negara : </label>
                 </div>
                 <div class="w-3/4">
-                    <input type="text" name="presiden" id="presiden" class="w-full rounded-md" value="<?= $negara[0]["namaKepalaNegara"] ?>">
+                    <input type="text" name="presiden" id="presiden" class="w-full rounded-md" value="<?= $data[0]["namaKepalaNegara"] ?>">
                 </div>
             </div>
 
