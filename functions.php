@@ -1,5 +1,4 @@
 <?php
-// TODO : Bikin Function Delete
 // Import File Koneksi ke Database
 require "koneksi.php";
 
